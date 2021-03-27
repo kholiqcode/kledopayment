@@ -19,5 +19,5 @@ Route::get('/', function () {
 });
 Route::get('/payments', [PaymentController::class, 'index'])->name('payments.show');
 Route::delete('/payments', [PaymentController::class, 'destroy'])->name('payments.delete');
-Route::get('/payments/add', [PaymentController::class, 'create'])->name('payments.add');
 Route::post('/payments/add', [PaymentController::class, 'store'])->name('payments.store');
+// Route::get('/payments/add', [PaymentController::class, 'create'])->name('payments.add');

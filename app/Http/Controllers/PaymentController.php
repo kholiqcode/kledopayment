@@ -2,23 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\Events\Deleting;
 use App\Helpers\ResponseFormatter;
 use App\Http\Requests\AddPaymentRequest;
 use App\Http\Requests\DeletePaymentRequest;
 use App\Jobs\ListPayment;
 use App\Models\Payment;
-use Illuminate\Broadcasting\Broadcasters\PusherBroadcaster;
-use Illuminate\Http\Request;
-use Illuminate\Queue\Jobs\Job;
-use Pusher\Pusher;
 
 class PaymentController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Display view list payments
      *
-     * @return \Illuminate\Http\Response
+     * @return view
      */
     public function index()
     {
@@ -27,20 +22,10 @@ class PaymentController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
+     * EndPoint for Add Payment
      *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        return view('tambah_payment');
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param  AddPaymentRequest  $request
+     * @return ResponseFormatter
      */
     public function store(AddPaymentRequest $request)
     {
@@ -55,44 +40,10 @@ class PaymentController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Remove the specific payment from database.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param  DeletePaymentRequest  $request
+     * @return ResponseFormatter
      */
     public function destroy(DeletePaymentRequest $request)
     {

@@ -9,7 +9,6 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
-use Pusher\Pusher;
 
 class ListPayment implements ShouldQueue
 {
@@ -35,7 +34,6 @@ class ListPayment implements ShouldQueue
      */
     public function handle()
     {
-        echo "Deleting Process " . $this->id;
         Payment::where('id', $this->id)->delete();
         event(new Deleting($this->id, "Berhasil Mengahpus Data"));
     }
